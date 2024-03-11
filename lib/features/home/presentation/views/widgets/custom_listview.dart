@@ -13,9 +13,9 @@ class CustomListview extends StatelessWidget {
       height: MediaQuery.of(context).size.height * .3,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemCount: 5,
-        itemBuilder: (context, index) => CustomListViewItem(),
+        itemBuilder: (context, index) => const CustomListViewItem(),
       ),
     );
   }

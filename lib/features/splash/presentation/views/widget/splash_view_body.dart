@@ -64,14 +64,14 @@ class _SplashViewBodyState extends State<SplashViewBody>
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
     animation = Tween<Offset>(
       begin: const Offset(0, 10),
-      end: Offset(0, 0),
+      end: const Offset(0, 0),
     ).animate(animationController);
     animationController.forward();
   }
 
   void nivgateToHome() {
     Future.delayed(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
       () {
         Get.to(() => const HomeView(),
             transition: Transition.fadeIn, duration: KTransimtDuration);
