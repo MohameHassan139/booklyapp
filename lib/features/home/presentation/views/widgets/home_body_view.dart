@@ -22,8 +22,26 @@ class HomeBodyView extends StatelessWidget {
             ),
             Text(
               'Best Selles',
-              style: Styles.titleMedium,
-            )
+              style: Styles.textStyle18,
+            ),
+            SizedBox(
+              height: 125,
+              child: AspectRatio(
+                aspectRatio: 2.7 / 4,
+                child: Container(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(16),
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: NetworkImage(
+                          'https://th.bing.com/th/id/OIF.qF6RCkujtxhb1834uyeyxQ?rs=1&pid=ImgDetMain'),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

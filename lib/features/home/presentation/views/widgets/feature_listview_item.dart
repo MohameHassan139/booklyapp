@@ -14,11 +14,14 @@ class CustomListViewItem extends StatelessWidget {
         child: Container(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           decoration: BoxDecoration(
-            color: Colors.amber,
+            color: Colors.grey,
             borderRadius: BorderRadius.circular(16),
-            // image: DecorationImage(
-            //   image: NetworkImage(""),
-            // ),
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: NetworkImage(
+                "https://th.bing.com/th/id/OIF.qF6RCkujtxhb1834uyeyxQ?rs=1&pid=ImgDetMain",
+              ),
+            ),
           ),
         ),
       ),
