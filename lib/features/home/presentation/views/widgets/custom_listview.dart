@@ -15,7 +15,7 @@ class CustomListview extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemCount: 5,
-        itemBuilder: (context, index) => const CustomListViewItem(),
+        itemBuilder: (context, index) => const CustomBookImage(),
       ),
     );
   }
