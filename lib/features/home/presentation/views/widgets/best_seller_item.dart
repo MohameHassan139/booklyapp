@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'book_rating.dart';
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({
+  BestSellerItem({
     super.key,
   });
 
@@ -71,7 +71,7 @@ class BestSellerItem extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    const BookRating(),
+                    BookRating(),
                   ],
                 )
               ],
