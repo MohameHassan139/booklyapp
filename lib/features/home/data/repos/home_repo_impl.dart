@@ -9,10 +9,13 @@ import 'package:dio/dio.dart';
 import '../../../../core/api/api_service.dart';
 
 class HomeRepoImpl implements HomeRepo {
+  
   @override
   Future<Either<List<BookModel>, Failuer>> fetchBestSellerBooks() async {
     try {
-      var data = await ApiService.api.get(quray: '');
+      var data = await ApiService.api.get(
+          quray:
+              'volumes?Filtering=free-ebooks&q=subject:programming&Sorting=newest');
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(item);
@@ -26,8 +29,19 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<List<BookModel>, Failuer>> fetchFeatureBooks() {
-    // TODO: implement fetchFeatureBooks
-    throw UnimplementedError();
+  Future<Either<List<BookModel>, Failuer>> fetchFeatureBooks() async {
+    try {
+      var data = await ApiService.api
+          .get(quray: 'volumes?Filtering=free-ebooks&q=subject:business');
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(item);
+      }
+      return left(books);
+    } on Exception catch (e) {
+      if (e is DioException)
+        return right(ServerFailuer.fromDioError(dioException: e));
+    }
+    return right(ServerFailuer(errorMessage: e.toString()));
   }
 }
