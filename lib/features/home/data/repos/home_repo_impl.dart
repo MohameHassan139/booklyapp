@@ -9,7 +9,6 @@ import 'package:dio/dio.dart';
 import '../../../../core/api/api_service.dart';
 
 class HomeRepoImpl implements HomeRepo {
-  
   @override
   Future<Either<List<BookModel>, Failuer>> fetchBestSellerBooks() async {
     try {
@@ -22,8 +21,9 @@ class HomeRepoImpl implements HomeRepo {
       }
       return left(books);
     } on Exception catch (e) {
-      if (e is DioException)
+      if (e is DioException) {
         return right(ServerFailuer.fromDioError(dioException: e));
+      }
     }
     return right(ServerFailuer(errorMessage: e.toString()));
   }
