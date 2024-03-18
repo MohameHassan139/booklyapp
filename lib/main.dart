@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FeatureBooksCubit(
             homeRepo: getIt.get<HomeRepoImpl>(),
-          ),
+          )..fetchFeatureBooks(),
         ),
         BlocProvider(
           create: (context) => FetchBestSellerCubit(

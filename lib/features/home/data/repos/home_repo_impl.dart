@@ -35,7 +35,7 @@ class HomeRepoImpl implements HomeRepo {
           .get(quray: 'volumes?Filtering=free-ebooks&q=subject:business');
       List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(item);
+        books.add(BookModel.fromJson(item));
       }
       return left(books);
     } on Exception catch (e) {

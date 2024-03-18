@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/utils/app_router.dart';
 import 'best_seller_item.dart';
 
 class BestSellerListView extends StatelessWidget {
@@ -16,7 +18,11 @@ class BestSellerListView extends StatelessWidget {
       separatorBuilder: (context, index) => const SizedBox(
         height: 20,
       ),
-      itemBuilder: (context, index) => BestSellerItem(),
+      itemBuilder: (context, index) => InkWell(
+          onTap: () {
+            GoRouter.of(context).pushNamed(AppRoutNamed.bookDetails);
+          },
+          child: BestSellerItem()),
     );
   }
 }
