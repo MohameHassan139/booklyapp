@@ -5,6 +5,7 @@ import 'package:shimmer/shimmer.dart';
 import 'best_seller_item_loading.dart';
 
 class BestSellerBookListShimmer extends StatelessWidget {
+  const BestSellerBookListShimmer({super.key});
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
@@ -13,7 +14,7 @@ class BestSellerBookListShimmer extends StatelessWidget {
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: 3, // Number of shimmer items
+        itemCount: 10, // Number of shimmer items
         itemBuilder: (context, index) {
           return BestSellerItemLoading();
         },

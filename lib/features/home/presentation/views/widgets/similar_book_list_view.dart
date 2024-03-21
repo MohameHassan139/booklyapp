@@ -23,14 +23,16 @@ class SimilarBookListView extends StatelessWidget {
             return ListView.builder(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemCount: state.books.length,
+              itemCount: state.books.items?.length ?? 0,
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
                   GoRouter.of(context).pushNamed(AppRoutNamed.bookDetails,
-                      extra: state.books[index]);
+                      extra: state.books.items![index]);
                 },
                 child: CustomBookImage(
-                  imageUrl: state.books[index].volumeInfo.imageLinks.thumbnail,
+                  imageUrl: state.books.items?[index].volumeInfo?.imageLinks
+                          ?.thumbnail ??
+                      '',
                 ),
               ),
             );

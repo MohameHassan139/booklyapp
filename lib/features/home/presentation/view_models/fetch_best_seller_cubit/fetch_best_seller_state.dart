@@ -17,6 +17,6 @@ final class FetchBestSellerFailure extends FetchBestSellerState {
 }
 
 final class FetchBestSellerSuccess extends FetchBestSellerState {
-  final List<BookModel> books;
+  final BookModels books;
   const FetchBestSellerSuccess({required this.books});
 }

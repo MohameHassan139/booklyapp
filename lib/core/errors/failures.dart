@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 
-
 abstract class Failuer {
   String errorMessage;
   Failuer({

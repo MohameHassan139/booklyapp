@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../../../core/utils/styles.dart';
-import '../../../data/models/book_model/book_model.dart';
+
+import '../../../data/models/book_models/item.dart';
 import 'book_action.dart';
 import 'custom_book_details_appbar.dart';
 import 'feature_listview_item.dart';
@@ -12,7 +13,7 @@ import 'feature_listview_item.dart';
 import 'similar_book_list_view.dart';
 
 class BookViewDetailsBody extends StatelessWidget {
-  final BookModel book;
+  final Item book;
   const BookViewDetailsBody({super.key, required this.book});
 
   @override
@@ -32,14 +33,14 @@ class BookViewDetailsBody extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * .2),
                     child: CustomBookImage(
-                      imageUrl: book.volumeInfo.imageLinks.thumbnail,
+                      imageUrl: book.volumeInfo!.imageLinks!.thumbnail!,
                     ),
                   ),
                   SizedBox(
                     height: 43,
                   ),
                   Text(
-                    '${book.volumeInfo.title}',
+                    '${book.volumeInfo?.title}',
                     style: Styles.textStyle30,
                   ),
                   SizedBox(
@@ -48,7 +49,7 @@ class BookViewDetailsBody extends StatelessWidget {
                   Opacity(
                     opacity: .7,
                     child: Text(
-                      book.volumeInfo.authors?[0] ?? "Unkown Auther",
+                      book.volumeInfo?.authors?[0] ?? "Unkown Auther",
                       style: Styles.textStyle18.copyWith(
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w500,

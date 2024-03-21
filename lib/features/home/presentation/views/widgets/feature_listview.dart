@@ -1,4 +1,5 @@
 import 'package:booklyapp/core/utils/app_router.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -24,14 +25,15 @@ class CustomListview extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemCount: state.books.length,
+              itemCount: state.books.items?.length??0,
               itemBuilder: (context, index) => InkWell(
                   onTap: () {
-                    GoRouter.of(context).pushNamed(AppRoutNamed.bookDetails);
+                    GoRouter.of(context).pushNamed(AppRoutNamed.bookDetails,
+                        extra: state.books.items![index]);
                   },
                   child: CustomBookImage(
-                    imageUrl:
-                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                    imageUrl: state
+                        .books.items![index].volumeInfo!.imageLinks!.thumbnail!,
                   )),
             ),
           );

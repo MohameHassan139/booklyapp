@@ -17,6 +17,6 @@ final class FetchFeatureFailure extends FeatureBooksState {
 }
 
 final class FetchFeatureSuccess extends FeatureBooksState {
-  final List<BookModel> books;
+  final BookModels books;
   const FetchFeatureSuccess({required this.books});
 }

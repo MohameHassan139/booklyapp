@@ -17,6 +17,6 @@ final class FetchSimilarFailure extends FetchSimilarBooksState {
 }
 
 final class FetchSimilarSuccess extends FetchSimilarBooksState {
-  final List<BookModel> books;
+  final BookModels books;
   const FetchSimilarSuccess({required this.books});
 }

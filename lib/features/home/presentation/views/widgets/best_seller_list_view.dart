@@ -21,17 +21,17 @@ class BestSellerListView extends StatelessWidget {
         return ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: state.books.length,
+          itemCount: state.books.items?.length??0,
           separatorBuilder: (context, index) => const SizedBox(
             height: 20,
           ),
           itemBuilder: (context, index) => InkWell(
               onTap: () {
                 GoRouter.of(context).pushNamed(AppRoutNamed.bookDetails,
-                    extra: state.books[index]);
+                    extra: state.books.items![index]);
               },
               child: BestSellerItem(
-                book: state.books[index],
+                book: state.books.items![index],
               )),
         );
       } else if (state is FetchBestSellerLoading) {

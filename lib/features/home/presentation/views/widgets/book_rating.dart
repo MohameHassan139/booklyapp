@@ -24,7 +24,7 @@ class BookRating extends StatelessWidget {
         const SizedBox(
           width: 6.3,
         ),
-         Text(
+        Text(
           "${rate ?? 0.0}",
           style: Styles.textStyle16,
         ),
