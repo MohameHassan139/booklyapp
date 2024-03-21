@@ -1,15 +1,19 @@
+import 'package:booklyapp/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:shimmer/shimmer.dart';
 
+import '../../../../../core/utils/colors.dart';
 import '../../../../../core/utils/styles.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+import '../../../../../core/widget/custom_network_image.dart';
 import 'book_rating.dart';
 
 class BestSellerItem extends StatelessWidget {
-  BestSellerItem({
+  const BestSellerItem({
     super.key,
+    required this.book,
   });
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +26,10 @@ class BestSellerItem extends StatelessWidget {
             child: Container(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               decoration: BoxDecoration(
-                color: Colors.grey,
                 borderRadius: BorderRadius.circular(16),
-                image: const DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(
-                      'https://th.bing.com/th/id/OIF.qF6RCkujtxhb1834uyeyxQ?rs=1&pid=ImgDetMain'),
-                ),
               ),
+              child: CustomNetworkImage(
+                  imageUrl: book.volumeInfo.imageLinks.thumbnail),
             ),
           ),
           const SizedBox(
@@ -41,8 +41,8 @@ class BestSellerItem extends StatelessWidget {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
-                  child: const Text(
-                    'Harry Potter and the Goblet of Fire',
+                  child: Text(
+                    '${book.volumeInfo.title}',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: Styles.textStyle20,
@@ -51,8 +51,8 @@ class BestSellerItem extends StatelessWidget {
                 const SizedBox(
                   height: 3,
                 ),
-                const Text(
-                  'J.K Rowing',
+                Text(
+                  book.volumeInfo.authors?[0] ?? "Unkown Auther",
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   style: Styles.textStyle14,
@@ -63,7 +63,7 @@ class BestSellerItem extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "19.99 €",
+                      "${book.saleInfo?.listPrice?.amount ?? 'free'}",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: Styles.textStyle20.copyWith(

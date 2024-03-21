@@ -4,15 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../../../core/utils/styles.dart';
-import '../../../../../core/widget/custom_bottom.dart';
+import '../../../data/models/book_model/book_model.dart';
 import 'book_action.dart';
 import 'custom_book_details_appbar.dart';
 import 'feature_listview_item.dart';
-import 'package:lottie/lottie.dart';
 
 import 'similar_book_list_view.dart';
 
 class BookViewDetailsBody extends StatelessWidget {
+  final BookModel book;
+  const BookViewDetailsBody({super.key, required this.book});
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -29,13 +31,15 @@ class BookViewDetailsBody extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * .2),
-                    child: CustomBookImage(),
+                    child: CustomBookImage(
+                      imageUrl: book.volumeInfo.imageLinks.thumbnail,
+                    ),
                   ),
                   SizedBox(
                     height: 43,
                   ),
                   Text(
-                    'The Tungle Book',
+                    '${book.volumeInfo.title}',
                     style: Styles.textStyle30,
                   ),
                   SizedBox(
@@ -44,7 +48,7 @@ class BookViewDetailsBody extends StatelessWidget {
                   Opacity(
                     opacity: .7,
                     child: Text(
-                      'Rudyary Kipling',
+                      book.volumeInfo.authors?[0] ?? "Unkown Auther",
                       style: Styles.textStyle18.copyWith(
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w500,

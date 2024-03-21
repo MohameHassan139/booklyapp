@@ -4,15 +4,17 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../../../core/utils/colors.dart';
 
-class FeatureBookListShimmer extends StatelessWidget {
-  const FeatureBookListShimmer({
+class CustomBookListShimmer extends StatelessWidget {
+  const CustomBookListShimmer({
     super.key,
+    this.ScreenHeight = 0.3,
   });
+  final double ScreenHeight;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .3,
+      height: MediaQuery.of(context).size.height * ScreenHeight,
       child: Shimmer.fromColors(
         baseColor: AppColors.KshimmerBaseColor,
         highlightColor: AppColors.KshimmerHighlightColor,

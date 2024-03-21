@@ -12,15 +12,14 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<List<BookModel>, Failuer>> fetchBestSellerBooks() async {
     try {
-      var data = await ApiService.api.get(
-          quray:
-              'volumes?Filtering=free-ebooks&q=subject:programming&Sorting=newest');
+      var data = await ApiService.api
+          .get(quray: 'volumes?Filtering=free-ebooks&q=flutter&Sorting=newest');
       List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(item);
+        books.add(BookModel.fromJson(item));
       }
       return left(books);
-    } on Exception catch (e) {
+    } catch (e) {
       if (e is DioException) {
         return right(ServerFailuer.fromDioError(dioException: e));
       }
@@ -32,15 +31,36 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<List<BookModel>, Failuer>> fetchFeatureBooks() async {
     try {
       var data = await ApiService.api
-          .get(quray: 'volumes?Filtering=free-ebooks&q=subject:business');
+          .get(quray: 'volumes?Filtering=free-ebooks&q=subject:science');
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
       return left(books);
-    } on Exception catch (e) {
-      if (e is DioException)
+    } catch (e) {
+      if (e is DioException) {
         return right(ServerFailuer.fromDioError(dioException: e));
+      }
+    }
+    return right(ServerFailuer(errorMessage: e.toString()));
+  }
+
+  @override
+  Future<Either<List<BookModel>, Failuer>> fetchSimilarBooks(
+      {required String category}) async {
+    try {
+      var data = await ApiService.api.get(
+          quray:
+              'volumes?Filtering=free-ebooks&Sorting=relevance&q=subject:$category');
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return left(books);
+    } catch (e) {
+      if (e is DioException) {
+        return right(ServerFailuer.fromDioError(dioException: e));
+      }
     }
     return right(ServerFailuer(errorMessage: e.toString()));
   }

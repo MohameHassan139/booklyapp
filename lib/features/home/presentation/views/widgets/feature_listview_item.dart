@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:shimmer/shimmer.dart';
 
-import '../../../../../core/utils/app_router.dart';
+import '../../../../../core/utils/colors.dart';
 
 class CustomBookImage extends StatelessWidget {
   const CustomBookImage({
     super.key,
+    required this.imageUrl,
   });
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +19,33 @@ class CustomBookImage extends StatelessWidget {
         child: Container(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           decoration: BoxDecoration(
-            color: Colors.grey,
             borderRadius: BorderRadius.circular(16),
-            image: const DecorationImage(
-              fit: BoxFit.fill,
-              image: NetworkImage(
-                "https://th.bing.com/th/id/OIF.qF6RCkujtxhb1834uyeyxQ?rs=1&pid=ImgDetMain",
-              ),
+          ),
+          child: Image(
+            fit: BoxFit.fill,
+            image: NetworkImage(
+              imageUrl,
             ),
+            loadingBuilder: (context, child, loadingProgress) =>
+                loadingProgress != null
+                    ? Shimmer.fromColors(
+                        baseColor: AppColors.KshimmerBaseColor,
+                        highlightColor: AppColors.KshimmerHighlightColor,
+                        child: Container(
+                          color: Colors.grey,
+                        ),
+                      )
+                    : child,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                color: Colors.grey,
+                child: const Icon(
+                  Icons.error,
+                  size: 40,
+                  color: Colors.red,
+                ),
+              );
+            },
           ),
         ),
       ),

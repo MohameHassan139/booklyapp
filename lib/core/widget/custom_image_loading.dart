@@ -1,6 +1,4 @@
-import 'package:booklyapp/core/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class CustomImageLoading extends StatelessWidget {
   const CustomImageLoading({super.key});
@@ -20,6 +18,5 @@ class CustomImageLoading extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

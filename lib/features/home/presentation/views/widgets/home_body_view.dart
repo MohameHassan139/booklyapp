@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../../../core/utils/styles.dart';
-import 'best_seller_item.dart';
+
 import 'best_seller_list_view.dart';
 import 'feature_listview.dart';
 
