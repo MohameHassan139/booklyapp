@@ -6,6 +6,7 @@ import '../../features/search/data/repos/search_repo_impl.dart';
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
+  
   getIt.registerSingleton<HomeRepoImpl>(HomeRepoImpl());
   getIt.registerSingleton<SearchRepoImpl>(SearchRepoImpl());
 }

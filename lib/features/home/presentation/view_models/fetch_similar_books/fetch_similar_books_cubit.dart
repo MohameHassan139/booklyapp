@@ -1,7 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:booklyapp/features/home/data/models/book_models/book_models.dart';
-import 'package:equatable/equatable.dart';
-
 import '../../../data/repos/home_repo.dart';
 
 part 'fetch_similar_books_state.dart';

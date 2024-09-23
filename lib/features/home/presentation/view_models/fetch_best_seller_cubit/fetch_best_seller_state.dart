@@ -1,6 +1,6 @@
 part of 'fetch_best_seller_cubit.dart';
 
-sealed class FetchBestSellerState extends Equatable {
+sealed class FetchBestSellerState  {
   const FetchBestSellerState();
 
   @override

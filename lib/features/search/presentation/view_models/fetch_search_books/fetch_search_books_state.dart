@@ -1,6 +1,6 @@
 part of 'fetch_search_books_cubit.dart';
 
-sealed class FetchSearchBooksState extends Equatable {
+sealed class FetchSearchBooksState {
   const FetchSearchBooksState();
 
   @override
